@@ -2,6 +2,8 @@
 package felulet;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 public class Felulet extends JFrame{
@@ -9,6 +11,8 @@ public class Felulet extends JFrame{
     private JButton btnFajlValaszto;
     private JPanel pnlHibak, pnlHaromszog, pnlAdat;
     private Container ablak;
+    
+    private JFileChooser fcFajlValaszto;
     
     public Felulet(){
         super();
@@ -33,6 +37,13 @@ public class Felulet extends JFrame{
         
         this.btnFajlValaszto.add(this.btnFajlValaszto);
         
+        this.btnFajlValaszto.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                adatokBetoltes(e);
+            }
+        }
+        );
         
         
         /*END adatok betöltés*/
@@ -50,5 +61,12 @@ public class Felulet extends JFrame{
         
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
+    }
+    
+    private void adatokBetoltes(ActionEvent ae){
+        this.fcFajlValaszto = new JFileChooser();
+        if(fcFajlValaszto.showDialog(this, "Fájl megnyitása") != -1){
+            System.out.println(fcFajlValaszto.getSelectedFile().toString());
+        }
     }
 }

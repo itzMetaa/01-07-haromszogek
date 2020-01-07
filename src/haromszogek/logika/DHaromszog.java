@@ -5,9 +5,28 @@ public class DHaromszog {
     private double aOldal;
     private double bOldal;
     private double cOldal;
+    private int sorSzama;
     
-    public DHaromszog(String sor, int sorSzama){
-    
+    public DHaromszog(String sor, int sorSzama) throws Exception{
+        this.setSorSzama(sorSzama);
+        
+        String[] adatok = sor.replace(',', '.').split(" ");
+        
+        this.setaOldal(Double.parseDouble(adatok[0]));
+        this.setbOldal(Double.parseDouble(adatok[1]));
+        this.setcOldal(Double.parseDouble(adatok[2]));
+        
+        this.EllNovekvoSorrend();
+        this.EllMegszerkesztheto();
+        this.EllDerekszogu();
+    }
+
+    public int getSorSzama() {
+        return sorSzama;
+    }
+
+    public void setSorSzama(int sorSzama) {
+        this.sorSzama = sorSzama;
     }
 
     public double getaOldal() {
@@ -71,6 +90,14 @@ public class DHaromszog {
             throw new Exception("Az adatok nincsenek megfelelő sorrendben!");
         }
         return novekvoSorrend;
+    }
+    
+    public double kerulet(){
+        return this.aOldal + this.bOldal + this.cOldal;
+    }
+    
+    public double terulet(){
+        return this.aOldal*this.bOldal/2;
     }
     
 }

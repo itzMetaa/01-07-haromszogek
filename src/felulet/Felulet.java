@@ -20,6 +20,9 @@ public class Felulet extends JFrame{
     private Container ablak;
     private List<DHaromszog> haromSzogLista;
     
+    private DefaultListModel dlmHiba;
+    private JList jHibaList;
+    
     private JFileChooser fcFajlValaszto;
     
     public Felulet(){
@@ -62,6 +65,15 @@ public class Felulet extends JFrame{
         this.pnlHibak.setSize(500, 150);
         this.pnlHibak.setBorder(new TitledBorder("Hibák a kiválaszott állományban"));
         this.ablak.add(this.pnlHibak);
+        
+            /*BEWGIN lista fletöltés*/
+            this.dlmHiba = new DefaultListModel();
+            this.jHibaList = new JList(dlmHiba);
+            
+            this.jHibaList.setSize(600,100);
+            this.jHibaList.setLocation(20,20);
+            this.pnlHibak.add(this.jHibaList);
+            /*END lista fletöltés*/
         /*itt végződik a hibák panel xdx*/
         
         

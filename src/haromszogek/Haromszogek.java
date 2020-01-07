@@ -1,21 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package haromszogek;
 
-/**
- *
- * @author Diak
- */
+import haromszogek.logika.DHaromszog;
+
 public class Haromszogek {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        try{
+            DHaromszog d1 = new DHaromszog("3 4 5", 1);
+            DHaromszog d2 = new DHaromszog("1,1 2,2 4,5", 2);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        
     }
     
 }

@@ -100,4 +100,13 @@ public class DHaromszog {
         return this.aOldal*this.bOldal/2;
     }
     
+    @Override
+    public String toString(){
+        return String.format("%d. sor: a=%f b=%f c=%f",
+                this.sorSzama,
+                this.aOldal,
+                this.bOldal,
+                this.cOldal);
+    }
+    
 }

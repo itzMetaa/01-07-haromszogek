@@ -1,9 +1,16 @@
 
 package felulet;
 
+import haromszogek.logika.DHaromszog;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 public class Felulet extends JFrame{
@@ -11,6 +18,7 @@ public class Felulet extends JFrame{
     private JButton btnFajlValaszto;
     private JPanel pnlHibak, pnlHaromszog, pnlAdat;
     private Container ablak;
+    private List<DHaromszog> haromSzogLista;
     
     private JFileChooser fcFajlValaszto;
     
@@ -44,8 +52,6 @@ public class Felulet extends JFrame{
             }
         }
         );
-        
-        
         /*END adatok betöltés*/
         
         
@@ -68,5 +74,32 @@ public class Felulet extends JFrame{
         if(fcFajlValaszto.showDialog(this, "Fájl megnyitása") != -1){
             System.out.println(fcFajlValaszto.getSelectedFile().toString());
         }
+    }
+    
+    private void fajlBeolvas(String fajlNev){
+        this.haromSzogLista = new ArrayList<>();
+        try{
+            FileReader fr = new FileReader(fajlNev);
+            BufferedReader br = new BufferedReader(fr);
+            
+            String sor = br.readLine();
+            while (sor != null) {
+                try{
+                    DHaromszog dh = new DHaromszog(sor, 0);
+                    sor = br.readLine();
+                } catch(Exception e){
+                    
+                }
+            }
+
+            br.close();
+            fr.close();
+        } catch(FileNotFoundException fnfe){
+            System.out.println(fnfe.getMessage());
+        } catch(IOException ioe){
+            System.out.println(ioe.getMessage());
+        }
+        
+        
     }
 }

@@ -3,6 +3,7 @@ package felulet;
 
 import haromszogek.logika.DHaromszog;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -69,6 +70,8 @@ public class Felulet extends JFrame{
             /*BEWGIN lista fletöltés*/
             this.dlmHiba = new DefaultListModel();
             this.jHibaList = new JList(dlmHiba);
+            JScrollPane gorgetosCuccos = new JScrollPane(this.jHibaList);
+            gorgetosCuccos.setPreferredSize(new Dimension (600,100));
             
             this.jHibaList.setSize(600,100);
             this.jHibaList.setLocation(20,20);

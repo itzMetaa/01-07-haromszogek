@@ -69,7 +69,9 @@ public class DHaromszog {
         boolean derekszogu = Math.pow(aOldal, 2) + Math.pow(bOldal, 2) == Math.pow(cOldal, 2);
         if (!derekszogu)
         {
-            throw new Exception("A háromszög nem derékszögű!");
+            throw new Exception(
+                    String.format("%d. sor: A háromszög nem derékszögű!", this.getSorSzama())
+            );
         }
         return derekszogu;
     }
@@ -78,7 +80,9 @@ public class DHaromszog {
         boolean szerkesztheto = aOldal + bOldal > cOldal;
         if (!szerkesztheto)
         {
-            throw new Exception("A háromszöget nem lehet megszerkeszteni!");
+            throw new Exception(
+                    String.format("%d. sor: A háromszöget nem lehet megszerkeszteni", this.getSorSzama())
+            );
         }
         return szerkesztheto;
     }
@@ -87,7 +91,9 @@ public class DHaromszog {
         boolean novekvoSorrend = aOldal < bOldal && bOldal <= cOldal;
         if (!novekvoSorrend)
         {
-            throw new Exception("Az adatok nincsenek megfelelő sorrendben!");
+            throw new Exception(
+                    String.format("%d. sor: Az adatok nincsenek megfelelő sorrendben!", this.getSorSzama())
+            );
         }
         return novekvoSorrend;
     }

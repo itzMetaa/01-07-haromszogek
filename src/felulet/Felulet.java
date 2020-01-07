@@ -90,10 +90,10 @@ public class Felulet extends JFrame{
                 try{
                     DHaromszog dh = new DHaromszog(sor, i++);
                     this.haromSzogLista.add(dh);
-                    sor = br.readLine();
                 } catch(Exception e){
                     System.out.println(e.getMessage());
                 }
+                sor = br.readLine();
             }
 
             br.close();

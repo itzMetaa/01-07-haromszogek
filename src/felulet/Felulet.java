@@ -72,7 +72,8 @@ public class Felulet extends JFrame{
     private void adatokBetoltes(ActionEvent ae){
         this.fcFajlValaszto = new JFileChooser();
         if(fcFajlValaszto.showDialog(this, "Fájl megnyitása") != -1){
-            System.out.println(fcFajlValaszto.getSelectedFile().toString());
+            String fajlNev = fcFajlValaszto.getSelectedFile().toString();
+            fajlBeolvas(fajlNev);
         }
     }
     
@@ -83,12 +84,15 @@ public class Felulet extends JFrame{
             BufferedReader br = new BufferedReader(fr);
             
             String sor = br.readLine();
+            
+            int i = 0;
             while (sor != null) {
                 try{
-                    DHaromszog dh = new DHaromszog(sor, 0);
+                    DHaromszog dh = new DHaromszog(sor, i++);
+                    this.haromSzogLista.add(dh);
                     sor = br.readLine();
                 } catch(Exception e){
-                    
+                    System.out.println(e.getMessage());
                 }
             }
 
